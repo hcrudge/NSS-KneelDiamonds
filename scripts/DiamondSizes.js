@@ -2,6 +2,7 @@ import { getSizes, setSize } from "./database.js"
 
 const sizes = getSizes()
 
+
 document.addEventListener(
     "change",
     (event) => { 
