@@ -16,3 +16,19 @@
     box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
 }
 
+.type{
+   margin: 2em;
+   border: 1px dashed dodgerblue;
+   border-radius: 0.5rem;
+   box-shadow: 0.25rem 0.25rem 0.5rem rgb(143, 143, 143);
+   
+} 
+.type_detail li{
+   
+     display: inline;
+ }  
+
+ .customOrders {
+     margin: 2rem;
+ }
+    
