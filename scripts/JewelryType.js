@@ -1,12 +1,14 @@
-import { getTypes, setType } from "./database.js"
+import { getTypes, setType, setOrderBuilder } from "./database.js"
 
 const type = getTypes()
+const orderBuilder = setOrderBuilder()
 
 document.addEventListener(
     "change",
     (event) => {
         if (event.target.name === "type") {
             setType(parseInt(event.target.value))
+            document.dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
 )
@@ -16,10 +18,17 @@ document.addEventListener(
         
         // Use .map() for converting objects to <li> elements
         const listItems = type.map(type => {
-            return `<li>
-            <input type="radio" name="type" value="${type.id}" /> ${type.type}
-            </li>`          
-        }
+            if (orderBuilder.typeId === type.id) {
+                return `<li>
+                <input type="radio" checked name="type" value="${type.id}" /> ${type.type}
+                </li>`     
+            }
+            else {
+                return `<li>
+                <input type="radio" name="type" value="${type.id}" /> ${type.type}
+                </li>`
+            } 
+        } 
         )
         
         // Join all of the strings in the array into a single string
