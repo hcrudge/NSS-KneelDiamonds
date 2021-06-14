@@ -12,6 +12,10 @@ document.addEventListener(
     (event) => {
         if (event.target.id === "orderButton"){
            addCustomOrder() 
+           document.getElementById("size").checked = false
+           document.getElementById("style").checked = false
+           document.getElementById("type").checked = false
+           document.getElementById("metal").checked = false
 
         }
     }

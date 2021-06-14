@@ -1,7 +1,5 @@
-import { getSizes, setOrderBuilder, setSize } from "./database.js"
+import { getSizes, setOrderBuilder, setSize } from "./dataAccess.js"
 
-const sizes = getSizes()
-const orderBuilder = setOrderBuilder()
 
 document.addEventListener(
     "change",
@@ -9,24 +7,27 @@ document.addEventListener(
         if (event.target.name === "size") {
             setSize(parseInt(event.target.value))
             document.dispatchEvent(new CustomEvent("stateChanged"))
-
+            
         } 
     }
-)
-
-export const DiamondSizes = () => {
-    let html = "<ul>"
-
-    // Use .map() for converting objects to <li> elements
+    )
+    
+    export const DiamondSizes = () => {
+        let html = "<ul>"
+        
+        const sizes = getSizes()
+        const orderBuilder = setOrderBuilder()
+    
+        // Use .map() for converting objects to <li> elements
     const listItems = sizes.map(size => {
         if (orderBuilder.sizeId === size.id) {
             return `<li>
-            <input type="radio" checked name="size" value="${size.id}" /> ${size.carets}
+            <input type="radio" id="size" checked name="size" value="${size.id}" /> ${size.carets}
             </li>`     
         }
         else {
             return `<li>
-            <input type="radio" name="size" value="${size.id}" /> ${size.carets}
+            <input type="radio" id ="size" name="size" value="${size.id}" /> ${size.carets}
             </li>`
         }  
     }      
