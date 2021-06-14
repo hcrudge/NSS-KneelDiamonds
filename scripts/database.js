@@ -78,6 +78,8 @@ export const setType = (id) => {
     database.orderBuilder.typeId = id
 }
 
+export const setOrderBuilder = () => database.orderBuilder
+
 export const addCustomOrder = () => {
     // Copy the current state of user choices
     const newOrder = {...database.orderBuilder}
